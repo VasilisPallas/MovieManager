@@ -1,0 +1,308 @@
+body { 
+    background: url('../images/bg.jpg') no-repeat center center fixed;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+} 
+
+#container{
+    width: 100%;
+}
+
+.not_found{
+    padding-top: 50px;
+    width: 250px;
+    margin: 0 auto 0 auto;
+    color: white;
+}
+
+#header{
+    width: 100%;
+    background-color: #0E2334; 
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    top: 0;
+}
+
+#full_search{
+    margin: 0 auto;
+    width: 70%;
+    text-align: center;
+}
+
+#full_search p.search{
+    font-size: 1.6em;
+    display: inline;
+}
+
+#full_search p{
+    color: white;
+    font-size: 1.2em;
+    display: inline;
+}
+
+.inputs{ 
+    -moz-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+    background-color: #EAEAEA; 
+    background: -moz-linear-gradient(top, #FFF, #EAEAEA); 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #FFF), color-stop(1.0, #EAEAEA)); 
+    border: 1px solid #0099ff;
+    color: #444;
+    font-size: 1.2em; 
+    padding-left: 10px;
+    width:35%;
+    height: 35px;
+    margin-top: 25px;
+} 
+.selection_inputs{ 
+    -moz-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+    background-color: #EAEAEA; 
+    background: -moz-linear-gradient(top, #FFF, #EAEAEA); 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #FFF), color-stop(1.0, #EAEAEA)); 
+    border: 1px solid #0099ff;
+    color: #444;
+    font-size: 1.2em; 
+    padding-left: 10px;
+    width:20%;
+    height: 35px;
+    margin-top: 25px;
+}
+
+.done_button{
+    margin: 30px 0 20px 0;
+    background: #4D78C6;
+    background-image: -webkit-linear-gradient(top, #4D78C6, #2C327C);
+    background-image: -moz-linear-gradient(top, #4D78C6, #2C327C);
+    background-image: -ms-linear-gradient(top, #4D78C6, #2C327C);
+    background-image: -o-linear-gradient(top, #4D78C6, #2C327C);
+    background-image: linear-gradient(to bottom, #4D78C6, #2C327C);
+    -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px;
+    text-shadow: 1px 1px 3px #666666;
+    -webkit-box-shadow: 0px 2px 18px #0F2231;
+    -moz-box-shadow: 0px 2px 18px #0F2231;
+    box-shadow: 0px 2px 18px #0F2231;
+    font-family: Georgia;
+    color: #ffffff;
+    font-size: 1.5em;
+    padding: 10px 20px 10px 20px;
+    border: solid #0E2130 0px;
+    text-decoration: none;
+}
+
+.done_button:hover {
+    background: #2269e3;
+    background-image: -webkit-linear-gradient(top, #2269e3, #1b29bf);
+    background-image: -moz-linear-gradient(top, #2269e3, #1b29bf);
+    background-image: -ms-linear-gradient(top, #2269e3, #1b29bf);
+    background-image: -o-linear-gradient(top, #2269e3, #1b29bf);
+    background-image: linear-gradient(to bottom, #2269e3, #1b29bf);
+    text-decoration: none;
+}
+
+.done_button:active{
+    padding: 8px 13px 6px;
+}
+
+#home{
+    margin-top: 23%;
+    position: relative;
+}
+
+#homeImage{
+    min-height: 200px;
+}
+
+.results{
+    width: 100%;
+    height: 100%;
+}
+
+.whole_movie_result{
+    border:1px solid #032942;
+    border-radius: 6px 6px 0 6px;
+    background-color: #103e5e;
+    width: 520px;
+    height:220px;
+    margin: 100px auto 100px auto;
+}
+
+.info_hyperlink{
+    color: white; 
+    text-decoration: none;
+}
+
+.image_movie_div{
+    float: left;
+    height: 100%;
+    width: 60%;
+    padding-left: 10px;
+}
+
+.image_movie_result{
+    padding-top: 10px;
+    width: 140px;
+    height: 200px;
+    margin: auto 0 auto 0;
+}
+
+.movie_data{
+    font-size: 1.2em; 
+    ΄text-align: center;
+}
+
+.option_div{
+    float: right;
+    border:1px solid #032942;
+    border-radius: 0 0 6px 6px;
+    background-color: #103e5e;
+    margin-top: 4px;
+    width: 100px;
+    height: 35px;
+    color: white;
+}
+
+.option_div a{
+    color: white;
+}
+
+.edit_movie{
+    float: right;
+    font-family:'Segoe UI Symbol';
+    padding: 0 10% 0 10%;
+    font-size: 1.5em;
+    height: 100%;
+    margin: 0;
+
+
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+}
+
+.edit_movie:hover{
+    background-color: white;
+    color: green;
+    float: right;
+    font-family:'Segoe UI Symbol';
+    padding: 0 10% 0 10%;
+    font-size: 1.5em;
+    height: 100%;
+    cursor: default;
+
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+}
+
+.edit_movie:active{
+    background-color: green;
+    color: white;
+    float: right;
+    font-family:'Segoe UI Symbol';
+    padding: 0 10% 0 10%;
+    font-size: 1.5em;
+    height: 100%;
+    cursor: default;
+
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+}
+
+.delete_movie{
+    float: left;
+    padding: 0 10% 0 10%;
+    font-size: 1.5em;
+    font-family:'Segoe UI Symbol'; 
+    height: 100%;
+    margin: 0;
+
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+}
+
+.delete_movie:hover{
+    background-color: white;
+    color: red;
+    float: left;
+    padding: 0 10% 0 10%;
+    font-size: 1.5em;
+    font-family:'Segoe UI Symbol'; 
+    margin: 0;
+    cursor: default;
+
+
+}
+
+.delete_movie:active{
+    background-color: red;
+    color: white;
+    float: left;
+    padding: 0 10% 0 10%;
+    font-size: 1.5em;
+    font-family:'Segoe UI Symbol'; 
+    margin: 0;
+    cursor: default;
+
+
+}
+
+.vr{
+    border-left:1px solid #032942;
+    height:100%;
+    float: left;
+}
+
+#pagination{
+    width:100%; 
+    padding-bottom: 30px;
+}
+
+#pagination ul{
+    width: 100px; margin: 0 auto 0 auto;
+}
+
+#pagination ul li{
+    display:inline; padding-left:10px;
+}
+
+#pagination ul li a{
+    color:white; font-size: 1.2em; text-decoration: none;
+}
+
+#pagination ul li a:hover{
+    color: #f9ce3e;
+}
+
+#pagination ul li a:active{
+    color: #fceab0;
+}
+
+#pagination ul li a.current_link{
+    color: #f9ce3e;
+}
+
+#footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 40px;
+    color: white;
+    background-color: #0D212F;
+    box-shadow: 10px 3px 5px 5px #000;
+}
+
+#footer p{
+    padding-left: 10px;
+    float: left;
+    min-width: 800px;
+}
