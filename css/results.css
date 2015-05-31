@@ -24,23 +24,29 @@ body {
     left: 0; 
     right: 0; 
     top: 0;
+    box-shadow: 10px 3px 5px #000;
 }
 
 #full_search{
     margin: 0 auto;
     width: 70%;
     text-align: center;
+    padding: 10px 0 10px 0;
+    color: white;
 }
 
 #full_search p.search{
     font-size: 1.6em;
     display: inline;
+    margin: 0;
+    padding-top: 0;
 }
 
 #full_search p{
     color: white;
     font-size: 1.2em;
     display: inline;
+    padding-left: 8px;
 }
 
 .inputs{ 
@@ -57,6 +63,20 @@ body {
     height: 35px;
     margin-top: 25px;
 } 
+
+.checkbox_inputs{
+    -moz-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+    background-color: #EAEAEA; 
+    background: -moz-linear-gradient(top, #FFF, #EAEAEA); 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #FFF), color-stop(1.0, #EAEAEA)); 
+    border: 1px solid #0099ff;
+    color: #444;
+    width: 15px;
+    height: 15px;
+    margin-top: 25px;
+}
+
 .selection_inputs{ 
     -moz-border-radius: 5px; 
     -webkit-border-radius: 5px; 
@@ -67,9 +87,13 @@ body {
     color: #444;
     font-size: 1.2em; 
     padding-left: 10px;
-    width:20%;
+    width:10%;
     height: 35px;
     margin-top: 25px;
+}
+
+.selection_inputs:disabled {
+    background: #dddddd;
 }
 
 .done_button{
@@ -112,6 +136,7 @@ body {
 #home{
     margin-top: 23%;
     position: relative;
+    width: 100px;
 }
 
 #homeImage{
@@ -129,7 +154,7 @@ body {
     background-color: #103e5e;
     width: 520px;
     height:220px;
-    margin: 100px auto 100px auto;
+    margin: 20px auto 100px auto;
 }
 
 .info_hyperlink{

@@ -26,39 +26,81 @@ function secondsConverter($seconds) {
     <body>
         <div id="container">
             <div id="header">
-                
+
                 <div id="full_search">
 
                     <p class="search">Αναζήτηση</p><br/>
 
-                    <input placeholder="Όνομα ταινίας" class="inputs" type="text" id="movie_title" name="movie_title"/><br/>
+                    <form method="get" action="results.php">
+                        <input placeholder="Όνομα ταινίας" class="inputs" type="text" id="search_text" name="search_text"/><br/>
+                        <p style="margin-left: 35px;">Από:</p> 
+                        <select name="start_year" id="start_year" class="selection_inputs" disabled>
+                            <?php
+                            foreach ($years as $year):
+                                echo '<option value="' . $year . '">' . $year . '</option>';
+                            endforeach;
+                            ?>
+                        </select>
 
-                    <p>Από:</p> <select name="movie_type" id="movie_type" class="selection_inputs">
-                        <?php
-                        foreach ($years as $year):
-                            echo '<option value="' . $year . '">' . $year . '</option>';
-                        endforeach;
-                        ?>
-                    </select>
+                        <p>Εώς:</p> 
+                        <select name="end_year" id="end_year" class="selection_inputs" disabled>
+                            <?php
+                            foreach ($years as $year):
+                                if ($year == date("Y")) {
+                                    echo '<option selected="selected" value="' . $year . '">' . $year . '</option>';
+                                } else {
+                                    echo '<option value="' . $year . '">' . $year . '</option>';
+                                }
+                            endforeach;
+                            ?>
+                        </select>
 
-                    <p>Εώς:</p> <select name="movie_type" id="movie_type" class="selection_inputs">
-                        <?php
-                        foreach ($years as $year):
-                            echo '<option value="' . $year . '">' . $year . '</option>';
-                        endforeach;
-                        ?>
-                    </select><br/>
+                        <label><input type="checkbox" class="checkbox_inputs" name="year_range" id="year_range" onclick="moreOptions()"/><p>Διάρκεια</p></label><br/>
 
-                    <p>Είδος:</p> 
-                    <select name="movie_type" id="movie_type" class="selection_inputs" style="width: 250px;">
-                        <?php
-                        foreach ($movie_types as $movie_type):
-                            echo '<option value="' . $movie_type . '">' . $movie_type . '</option>';
-                        endforeach;
-                        ?>
-                    </select><br/>
+                        <select style="width: 70px;" disabled hidden id="sql_statement" name="sql_statement" class="selection_inputs">
+                            <option value="and">ΚΑΙ</option>
+                            <option value="or">Ή</option>
+                        </select><br/>
 
-                    <input class="done_button" type="submit" class="bluebutton" value="Αναζήτηση">
+                        <select name="movie_type" id="movie_type" class="selection_inputs" style="margin-left: 35px; width: 250px;" disabled>
+                            <?php
+                            foreach ($movie_types as $movie_type):
+                                echo '<option value="' . $movie_type . '">' . $movie_type . '</option>';
+                            endforeach;
+                            ?>
+                        </select>
+
+                        <label><input style="margin-left: 22px;" type="checkbox" class="checkbox_inputs" name="type" id="type" onclick="moreOptions()"/><p>Είδος</p></label><br/>
+
+                        <input class="done_button" type="submit" class="bluebutton" value="Αναζήτηση">
+                    </form>
+
+                    <script type="text/javascript">
+                        function moreOptions() {
+                            if (document.getElementById('year_range').checked) {
+                                document.getElementById('start_year').disabled = false;
+                                document.getElementById('end_year').disabled = false;
+                            } else {
+                                document.getElementById('start_year').disabled = true;
+                                document.getElementById('end_year').disabled = true;
+                            }
+
+                            if (document.getElementById('type').checked) {
+                                document.getElementById('movie_type').disabled = false;
+                            } else {
+                                document.getElementById('movie_type').disabled = true;
+                            }
+
+                            if (document.getElementById('year_range').checked && document.getElementById('type').checked)
+                            {
+                                sql_statement.hidden = false;
+                                sql_statement.disabled = false;
+                            } else {
+                                sql_statement.hidden = true;
+                                sql_statement.disabled = true;
+                            }
+                        }
+                    </script>
                 </div>
 
             </div>
@@ -69,16 +111,40 @@ function secondsConverter($seconds) {
                 $p = 0;
                 if ($_SERVER['REQUEST_METHOD'] == "GET") {
                     try {
-
-                        if (!isset($_GET['search_text'])) {
-                            $movie = "";
-                        } else {
-                            $movie = $_GET['search_text'];
-                        }
                         require('params.php');
                         $pdoObject = new PDO("mysql:host=$dbhost; dbname=$dbname;", $dbuser, $dbpass);
                         $pdoObject->exec('set names utf8');
-                        $sql = "Select * from movie where movieName like '%$movie%';";
+
+                        if (isset($_GET['search_text'])) {
+                            $movie = $_GET['search_text'];
+                        } else {
+                            $movie = "";
+                        }
+
+                        if (isset($_GET['start_year'], $_GET['end_year'])) {
+                            $startYear = $_GET['start_year'];
+                            $endYear = $_GET['end_year'];
+                        }
+
+                        if (isset($_GET['movie_type'])) {
+                            $movieType = $_GET['movie_type'];
+                        }
+
+
+                        if (isset($_GET['sql_statement'])) {
+                            $statement = (string) $_GET['sql_statement'];
+                        }
+
+                        if (!isset($_GET['start_year']) && !isset($_GET['end_year']) && !isset($_GET['movie_type'])) {
+                            $sql = "Select * from movie where movieName like '%$movie%';";
+                        } else if (isset($_GET['start_year']) && isset($_GET['end_year']) && !isset($_GET['movie_type'])) {
+                            $sql = "Select * from movie where (movieName like '%$movie%') AND (year(movieYearRelease) between  $startYear and $endYear);";
+                        } else if (isset($_GET['movie_type']) && !isset($_GET['start_year']) && !isset($_GET['end_year'])) {
+                            $sql = "select * from movie where (movieName like '%$movie%') and (movieType = '$movieType');";
+                        } else if (isset($_GET['start_year']) && isset($_GET['end_year']) && isset($_GET['sql_statement']) && isset($_GET['movie_type'])) {
+                            $sql = "select * from movie where (year(movieYearRelease) between  $startYear and $endYear) $statement (movieType = '$movieType');";
+                        }
+
                         $statement = $pdoObject->query($sql);
                         $results = $statement->rowCount();
                         $statement->closeCursor();
@@ -93,7 +159,20 @@ function secondsConverter($seconds) {
                                 $p = $_GET['p'];
                             }
                             $page = ($p - 1) * 10;
-                            $sql = "Select * from movie where movieName like '%$movie%' limit $page,10;";
+
+
+                            if (!isset($_GET['start_year']) && !isset($_GET['end_year']) && !isset($_GET['movie_type'])) {
+                                $sql = "Select * from movie where movieName like '%$movie%' limit $page,10;";
+                            } else if (isset($_GET['start_year']) && isset($_GET['end_year']) && !isset($_GET['movie_type'])) {
+                                $sql = "Select * from movie where (movieName like '%$movie%') AND (year(movieYearRelease) between  $startYear and $endYear) limit $page,10;";
+                            } else if (isset($_GET['movie_type']) && !isset($_GET['start_year']) && !isset($_GET['end_year'])) {
+                                $sql = "select * from movie where movieName like '%$movie%' and movieType = '$movieType' limit $page,10;";
+                            } else if (isset($_GET['start_year']) && isset($_GET['end_year']) && isset($_GET['sql_statement']) && isset($_GET['movie_type']) && $statement == "and") {
+                                $sql = "select * from movie where (year(movieYearRelease) between  $startYear and $endYear) and (movieType = '$movieType') limit $page,10;";
+                            } else if (isset($_GET['start_year']) && isset($_GET['end_year']) && isset($_GET['sql_statement']) && isset($_GET['movie_type']) && $statement == "or") {
+                                $sql = "select * from movie where (year(movieYearRelease) between  $startYear and $endYear) or (movieType = '$movieType') limit $page,10;";
+                            }
+
                             $statement = $pdoObject->query($sql);
 
                             if ($statement != FALSE) {
