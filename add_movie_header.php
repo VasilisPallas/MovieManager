@@ -1,8 +1,15 @@
+<?php
+if (isset($_GET['movieID'])) {
+    $title_text = 'Τροποποίηση ταινίας';
+} else {
+    $title_text = 'Εισαγωγή ταινίας';
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Εισαγωγή νέας ταινίας</title>
+        <title><?php echo $title_text ?></title>
         <link href="css/add_movie_css.css" rel="stylesheet" type="text/css"/>
         <link href="css/customAlertBox_css.css" rel="stylesheet" type="text/css"/>
         <script type="text/javascript" src="javascript/validations.js" ></script>

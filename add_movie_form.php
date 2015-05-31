@@ -109,7 +109,7 @@ if (isset($_GET['movieID'])) {
         <input id="file-upload" value="<?php echo $image ?>" name="file-upload" type="file" accept="image/*"/>
 
         <p>Περιγραφή Ταινίας</p><br/>
-        <textarea class="textareaInputs" value="<?php echo $description; ?>" type="text" id="movie_description" name="movie_description" onkeyup="check_limit('movie_description', 500, 'chars_left_counter');"></textarea><br/>
+        <textarea class="textareaInputs" type="text" id="movie_description" name="movie_description" onkeyup="check_limit('movie_description', 500, 'chars_left_counter');"><?php echo $description; ?></textarea><br/>
         <p id="chars_left_counter">Προαιρετικά, ως 500 χαρακτήρες.</p><br/>
 
         <input class="done_button" type="submit" class="bluebutton" value=<?php
