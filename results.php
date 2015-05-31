@@ -99,7 +99,7 @@ function secondsConverter($seconds) {
                                 sql_statement.hidden = true;
                                 sql_statement.disabled = true;
                             }
-                        }
+                        } 
                     </script>
                 </div>
 
