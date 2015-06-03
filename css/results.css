@@ -165,7 +165,7 @@ body {
 .image_movie_div{
     float: left;
     height: 100%;
-    width: 60%;
+    width: 30%;
     padding-left: 10px;
 }
 
@@ -186,7 +186,7 @@ body {
     border:1px solid #032942;
     border-radius: 0 0 6px 6px;
     background-color: #103e5e;
-    margin-top: 4px;
+    margin-top: 25px;
     width: 100px;
     height: 35px;
     color: white;

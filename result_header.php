@@ -2,6 +2,11 @@
 $movie_types = array("Κωμωδία", "Αισθηματική", "Περιπέτεια", "Επιστημονική Φαντασία", "Θρίλερ");
 $years = range(1950, date("Y"));
 
+function nameEllipsis($in)
+{
+    return strlen($in) > 27 ? mb_substr($in,0,27,'utf-8')."..." : $in;
+}
+
 require('seconds_converter.php');
 ?>
 

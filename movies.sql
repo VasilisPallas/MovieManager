@@ -8,24 +8,24 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema Movies
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `mydb` ;
+DROP SCHEMA IF EXISTS `Movies` ;
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema Movies
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `Movies` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `Movies` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Movie`
+-- Table `Movies`.`Movie`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Movies`.`Movie` ;
 
 CREATE TABLE IF NOT EXISTS `Movies`.`Movie` (
-  `movieId` INT NOT NULL,
-  `movieName` VARCHAR(60) NOT NULL,
+  `movieId` INT NOT NULL AUTO_INCREMENT,
+  `movieName` VARCHAR(150) NOT NULL,
   `movieType` VARCHAR(25) NOT NULL,
   `movieLenght` SMALLINT NOT NULL,
   `movieYearRelease` DATE NOT NULL,
@@ -34,6 +34,30 @@ CREATE TABLE IF NOT EXISTS `Movies`.`Movie` (
   PRIMARY KEY (`movieId`))
 ENGINE = InnoDB;
 
+-- Θρίλερ
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('Dead silence','Θρίλερ',92,'2007/03/16','Ένας ψυχοπαθής δολοφόνος, που ζει σε ιδρύματα από μικρή ηλικία, αποδρά και ξεκινάει μία ανελέητη σφαγή… Πολλά χρόνια πριν, όταν ο Κάρπεντερ είχε κέφια, κάθε δημιουργία του αποτελούσε σταθμό για τους λάτρεις του αίματος. Το »Halloween» είναι ο μεγαλύτερος.','dead_silence.jpg');
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('The sixth sense','Θρίλερ',107,'1999/11/05','Αγόρι που επικοινωνεί με πνεύματα που δεν ξέρουν ότι είναι νεκροί επιδιώκει τη βοήθεια ενός  παιδοψυχολόγου.','The_Sixth_Sense.jpg');
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('The uninvited','Θρίλερ',87,'2009/01/30','Μία νεαρή κοπέλα η Anna Rydell επιστρέφει στο σπίτι με την αδελφή της  μετά από ένα πέρασμα σε ένα ψυχιατρείο, αν και η επιστροφή της είναι σε κίνδυνο χάρη στη σκληρή μητριά της και έναν σε απόσταση πατέρα όπως και την παρουσία ενός φαντάσματος στο σπίτι τους…','The_uninvited.jpg');
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('The hills have eyes','Θρίλερ',107,'2006/07/06','Αμερικανή οικογένεια καταδιώκεται από μια ομάδα παραμορφωμένων ανθρώπων που ζουν ψυχωτικά στην έρημο, μακριά από τον πολιτισμό.','The_Hills_Have_Eyes.jpg');
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('The collector','Θρίλερ',90,'2009/07/31','Απελπισμένος να εξοφλήσει το χρέος του στην πρώην σύζυγό του, ένας πρώην κατάδικος σκαρώνει μια ληστεία στο σπίτι του  εργοδότη του μη γνωρίζοντας ότι υπάρχει μια δεύτερη παρουσία που  έχει στόχο να σβήσει την ατελείωτη του δίψα για φόνους δια μέσου μιας σειράς από θανάσιμες παγίδες που έχει στήσει..','the_collector.jpg');
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('Silence of the lambs','Θρίλερ',118,'1991/03/22','Μία νεαρή δόκιμος του FBI πρέπει να εμπιστευτεί  έναν φυλακισμένο δολοφόνο για να λάβει τη βοήθεια του με σκοπό την αλίευση του άλλου κατά συρροή δολοφόνου ο οποίος γδέρνει τα θύματά του.','the_silence_of_the_lamps.jpg');
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('Saw','Θρίλερ',103,'2005/03/25','','saw.jpg');
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('Saw 2','Θρίλερ',93,'2005/03/25','Με ένα νεκρό σώμα ανάμεσα τους, δύο άντρες ξυπνούν σε ασφαλή «φωλιά» ενός κατά συρροή δολοφόνου ο οποίος είναι το παρατσούκλι «παζλ»(Jigsaw) Οι άνδρες πρέπει να ακολουθούν τους διάφορους κανόνες και στόχους, εάν επιθυμούν να επιβιώσουν και να κερδίσουν αυτό το θανάσιμο παιχνίδι!!!!','saw_2.jpg');
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('Insidious','Θρίλερ',103,'2011/05/12','Τυπική οικογένεια επιθυμεί να αποτρέψει τα κακά πνεύματα που παγίδευσαν το παιδί τους σε κωματώδη κατάσταση σε ένα χώρο άλλου κόσμου..','insidious.jpg');
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('Shining','Θρίλερ',146,'1980/12/22','Μια οικογένεια είναι επικεφαλής σε ένα απομονωμένο ξενοδοχείο για το χειμώνα, όπου ένα κακό σαν πνευματική παρουσία επηρεάζει τον πατέρα και τον κάνει σατανικά βίαιο, ενώ ο γιος του  βλέπει τρομακτικά προαισθήματα από το παρελθόν και το μέλλον.','Shining.jpg');
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('Orphan','Θρίλερ',123,'2009/09/24','','orphan.jpg');
+
+-- Κωμωδίες
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('Freaky Friday','Κωμωδία',97,'2003/12/26','Μία εργασιομανής μητέρα μαζί με την κόρη της, θα μπουν σε μία περιπέτεια που κανείς δεν θα μπορούσε να φανταστεί… Όταν αλλάζουν σώματα, τότε η μία αναγκάζεται να προσαρμοστεί στη ζωή της άλλης, όπου και έρχονται αντιμέτωπες με μία αστεία και κατά πολύ… διαφορετική πραγματικότητα.','Freaky_Friday.jpg');
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('Monster in Law','Κωμωδία',101,'2005/05/27','Η ερωτική ζωή της Charlotte ανάγεται σε μια ατελείωτη σειρά από καταστροφικά ραντεβού στα τυφλά, μέχρι που συναντά τον τέλειο άντρα, τον Κέβιν. Δυστυχώς όμως, η αδίστακτη μητέρα του θα κάνει τα πάντα για να καταστρέψει τη σχέση τους… Μία κακιά πεθερά, που δεν λέει να δείξει έλεος!','monster_in_law.jpg');
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('John Tucker Must Die','Κωμωδία',89,'2006/10/26','Τρεις πρώην κοπέλες ενός κατά συρροή ψεύτη, με πτυχίο στην απάτη και την μοιχεία, στήνουν ένα σχέδιο για να τον εκδικηθούν, σε μία προσπάθεια να πάρουν το αίμα τους πίσω και να τον πληγώσουν συναισθηματικά. Γι” αυτό τον λόγο θα τον κάνουν να ερωτευτεί την κοπέλα που μόλις ήρθε στην πόλη, για να δουν να «ραγίζει» η καρδιά του… Θα το καταφέρουν άραγε;','John_Tucker_Must_Die.jpg');
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('The Hangover','Κωμωδία',100,'2009/07/16','Τρεις τύποι ξυπνούν έπειτα από ένα bachelor party στο Λας Βέγκας, με καμία ανάμνηση του τι έγινε την περασμένη νύχτα, και τον γαμπρό να… αγνοείται! Με τον δικό τους λοιπόν τρόπο, ξεσηκώνουν την πόλη και επιστρατεύουν θεούς και δαίμονες για να βρουν τον φίλο τους έγκαιρα, πριν τον γάμο του…','The_Hangover.jpg');
+
+-- Περιπέτειες
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('Οι Πειρατές της Καραϊβικής: Η Κατάρα του Μαύρου Μαργαριταριού','Περιπέτεια',143,'2003/07/09','Ο σιδεράς Γουίλ Τέρνερ συμμαχεί με τον εκκεντρικό πειρατή Τζάκ Σπάροου, προκειμένου να σώσει τον έρωτα της ζωής του από τα χέρια των πρώην συντρόφων του Τζακ. Ο παραγωγός της ταινίας, Jerry Bruckheimer, εμπνεύστηκε τους πειρατές από μία παιδική ατραξιόν της Disneyland και πέτυχε διάνα.','oi-peirates-ths-karaibikhs-h-katara-toy-mayroy-margaritarioy-2003.jpg');
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('Ιντιάνα Τζόουνς και η Τελευταία Σταυροφορία','Περιπέτεια',127,'1989/05/24','Όταν ο Dr Henry Jones ο γηραιότερος εξαφανίζεται καθώς αναζητούσε το άγιο δισκοπότηρο, ο γιος του, αρχαιολόγος Indianna Jones πρέπει να ακολουθήσει τα ίχνη του και ταυτόχρονα να σταματήσει τους Ναζί… Ο Steven Spielberg αγκαζάρει τον George Lucas για το τρίτο και όπως είχαν υποσχεθεί τότε, τελευταίο μέρος αυτής της επικής περιπέτειας.','intiana-tzooyns-kai-h-teleytaia-stayroforia-1989.jpg');
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('Ο Εξολοθρευτής','Περιπέτεια',107,'1984/10/26','Ένα άτρωτο Cyborg στέλνεται από το μέλλον για να σκοτώσει τη Σάρα Κόνορ, μητέρα του μελλοντικού αρχηγού της αντίστασης των ανθρώπων κατά των ρομπότ. Ο μόνος που μπορεί να τη προστατέψει είναι ένας άντρας, που έρχεται και αυτός από το μέλλον.','o-exolo8reyths-1984.jpg');
+INSERT INTO Movie (movieName,movieType,movieLenght,movieYearRelease,movieDesciption,movieImage) VALUES('Πολύ Σκληρός για να Πεθάνει','Περιπέτεια',131,'1988/07/15','Ο Νεοϋορκέζος μπάτσος John McClane, μόλις έφτασε στο Los Angeles για να περάσει τα Χριστούγεννα με την οικογένεια του. Δυστυχώς αυτά τα Χριστούγεννα δεν θα είναι καλά για όλους, αφού μία ομάδα τρομοκρατών έχει πιάσει ομήρους στο κτήριο της Νακατόμι και ο μόνος που μπορεί να τους βοηθήσει είναι ο σκληροτράχηλος Mclane…','poly-sklhros-gia-na-pe8anei-1988.jpg');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

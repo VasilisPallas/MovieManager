@@ -83,7 +83,7 @@
                         . '<img class="image_movie_result" src="' . $image . '"/>'
                         . '</div>'
                         . '<div class="internal_movie_result">'
-                        . '<p class="movie_data" style="font-size: 1.4em"><strong>' . $record['movieName'] . '</strong></p>'
+                        . '<p class="movie_data,name" style="font-size: 1.4em"><strong>' . nameEllipsis($record['movieName']) . '</strong></p>'
                         . '<p class="movie_data"> Τύπος: ' . $record['movieType'] . '</p>'
                         . '<p class="movie_data"> Διάρκεια: ' . secondsConverter($record['movieLenght']) . ' λεπτά</p>'
                         . '<p class="movie_data"> Ημερ/νια κυκλοφορίας: ' . date('d/m/Y', strtotime($record['movieYearRelease'])) . '</p>'
@@ -110,9 +110,25 @@
                 for ($i = 1; $i <= $x; $i++) {
                     $end = $x;
                     if ($i == $p) {
-                        echo ' <li><a class="current_link" href="results.php?movieID=' . $movie . '&p=' . $i . '">' . $i . '</a></li>';
+                        if (!isset($_GET['start_year']) && !isset($_GET['end_year']) && !isset($_GET['movie_type'])) {
+                            echo ' <li><a class="current_link" href="results.php?movieID=' . $movie . '&p=' . $i . '">' . $i . '</a></li>';
+                        } else if (isset($_GET['start_year']) && isset($_GET['end_year']) && !isset($_GET['movie_type'])) {
+                            echo ' <li><a class="current_link" href="results.php?movieID=' . $movie . '&start_year=' . $startYear . '&end_year=' . $endYear . '&p=' . $i . '">' . $i . '</a></li>';
+                        } else if (isset($_GET['movie_type']) && !isset($_GET['start_year']) && !isset($_GET['end_year'])) {
+                            echo ' <li><a class="current_link" href="results.php?movieID=' . $movie . '&movie_type=' . $movieType . '&p=' . $i . '">' . $i . '</a></li>';
+                        } else if (isset($_GET['start_year']) && isset($_GET['end_year']) && isset($_GET['sql_statement']) && isset($_GET['movie_type'])) {
+                            echo ' <li><a class="current_link" href="results.php?movieID=' . $movie . '&start_year=' . $startYear . '&end_year=' . $endYear . '&movie_type=' . $movieType . '&p=' . $i . '">' . $i . '</a></li>';
+                        }
                     } else {
-                        echo ' <li><a href="results.php?movieID=' . $movie . '&p=' . $i . '">' . $i . '</a></li>';
+                        if (!isset($_GET['start_year']) && !isset($_GET['end_year']) && !isset($_GET['movie_type'])) {
+                            echo ' <li><a href="results.php?movieID=' . $movie . '&p=' . $i . '">' . $i . '</a></li>';
+                        } else if (isset($_GET['start_year']) && isset($_GET['end_year']) && !isset($_GET['movie_type'])) {
+                            echo ' <li><a href="results.php?movieID=' . $movie . '&start_year=' . $startYear . '&end_year=' . $endYear . '&p=' . $i . '">' . $i . '</a></li>';
+                        } else if (isset($_GET['movie_type']) && !isset($_GET['start_year']) && !isset($_GET['end_year'])) {
+                            echo ' <li><a href="results.php?movieID=' . $movie . '&movie_type=' . $movieType . '&p=' . $i . '">' . $i . '</a></li>';
+                        } else if (isset($_GET['start_year']) && isset($_GET['end_year']) && isset($_GET['sql_statement']) && isset($_GET['movie_type'])) {
+                            echo ' <li><a href="results.php?movieID=' . $movie . '&start_year=' . $startYear . '&end_year=' . $endYear . '&movie_type=' . $movieType . '&p=' . $i . '">' . $i . '</a></li>';
+                        }
                     }
                 }
                 echo '</ul>'
